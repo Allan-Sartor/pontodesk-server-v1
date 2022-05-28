@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  devise_for :users, controllers: { registrations: 'registrations' }
+  namespace :api do
+    namespace :v1 do
+      get 'post/index'
+      post :auth, to: 'authentication#create'
+      get  '/auth' => 'authentication#fetch'
+      resource :calls
+    end
+  end
 end
