@@ -5,7 +5,7 @@ class Api::V1::AuthenticationController < ApiController
     user = User.find_by(email: params[:email])
     puts user
     if user&.valid_password?(params[:password])
-      render json: { token: JsonWebToken.encode(sub: user.id) }
+      render json: { token: JsonWebToken.encode(sub: user.id), user: user }
     else
       render json: { errors: 'invalid' }
     end
