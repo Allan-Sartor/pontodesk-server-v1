@@ -1,20 +1,19 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: db
+  username: postgres
+  password: postgres
 
 development:
   <<: *default
-  database: pontodesk_server_development
-  
+  database: pontodesk_server_v1_development
+
 test:
   <<: *default
-  database: pontodesk_server_test
+  database: pontodesk_server_v1_test
 
 production:
   <<: *default
-  database: pontodesk_server_production
-  username: pontodesk_server
-  password: <%= ENV["PONTODESK_SERVER_V1_DATABASE_PASSWORD"] %>
+  database: pontodesk_server_v1_production
