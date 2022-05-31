@@ -5,7 +5,7 @@ ruby "3.0.0"
 
 gem "rails", "~> 7.0.3"
 
-gem "pg", "~> 1.1"
+gem "pg", "~> 1.3.5"
 
 gem "puma", "~> 5.0"
 
