@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       # Autenticated routes and validated token
       post :auth, to: 'authentication#login'
-      get  '/auth_token', to: 'authentication#fetch'
+      get  '/auth_token', to: 'authentication#validate_user'
       
       # Users routes
       get  '/usersall', to: 'user#index'

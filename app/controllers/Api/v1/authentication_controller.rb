@@ -7,11 +7,11 @@ class Api::V1::AuthenticationController < ApiController
     if user&.valid_password?(params[:password])
       render json: { token: JsonWebToken.encode(sub: user.id), user: user }
     else
-      render json: { errors: 'invalid' }
+      render json: { errors: 'Usuário ou senha inválidos!' }
     end
   end
   
-  def fetch
+  def validate_user
     render json: current_user
   end
 end
