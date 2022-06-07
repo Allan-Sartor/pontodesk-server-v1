@@ -2,11 +2,18 @@ class Api::V1::CallsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_call, only: %i[ show update destroy ]
 
+  # GET All calls
+  def get_all_calls
+    @calls = Call.all
+
+    render json: @calls
+  end
+
   # GET /calls
   def index
     @calls = current_user.call.all
 
-    render json: @calls
+    render json: @call
   end
 
   # GET /calls/1
@@ -40,12 +47,10 @@ class Api::V1::CallsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_call
       @call = current_user.call.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def call_params
       params.permit(:priority_level, :anydesk_number, :description, :image_url, :call_status)
     end

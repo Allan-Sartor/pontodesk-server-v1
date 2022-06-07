@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
       # Calls routes
       resource :calls
+      get '/calls_all', to: 'calls#get_all_calls'
     end
   end
 end
