@@ -1,4 +1,4 @@
-class Api::V1::CallsController < ApplicationController
+class Api::V1::CallsController < ApiController
   before_action :authenticate_user!
   before_action :set_call, only: %i[ show update destroy ]
 
@@ -18,7 +18,7 @@ class Api::V1::CallsController < ApplicationController
 
   # GET /calls/1
   def show
-    render json: @call
+    render json: { call: @call }
   end
 
   # POST /calls
@@ -35,7 +35,7 @@ class Api::V1::CallsController < ApplicationController
   # PATCH/PUT /calls/1
   def update
     if @call.update(call_params)
-      render json: @call
+      render json: @call, status: :ok
     else
       render json: @call.errors, status: :unprocessable_entity
     end
