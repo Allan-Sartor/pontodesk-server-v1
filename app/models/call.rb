@@ -1,5 +1,6 @@
 class Call < ApplicationRecord
   belongs_to :user
+  has_many :review
   
   # Generate average score for call
   # def avg_score
