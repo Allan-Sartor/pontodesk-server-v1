@@ -1,4 +1,5 @@
-class ReviewsController < ApplicationController
+class Api::V1::ReviewsController < ApiController
+  before_action :authenticate_user!
   before_action :set_review, only: %i[ show update destroy ]
 
   # GET /reviews
@@ -10,15 +11,15 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1
   def show
-    render json: @review
+    render json: { review: @review }
   end
 
   # POST /reviews
   def create
-    @review = Review.new(review_params)
+    @review = current_user.review.new(review_params)
 
     if @review.save
-      render json: @review, status: :created, location: @review
+      render json: @review, status: :created
     else
       render json: @review.errors, status: :unprocessable_entity
     end
@@ -39,13 +40,12 @@ class ReviewsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_review
-      @review = Review.find(params[:id])
+      @review = current_user.review.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def review_params
-      params.require(:review).permit(:title, :description, :score, :user_id, :call_id)
+      params.permit(:title, :description, :score, :call_id)
     end
 end
