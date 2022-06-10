@@ -8,5 +8,5 @@ class User < ApplicationRecord
          :validatable
   
   has_many :call, dependent: :destroy
-  has_many :review, dependent: :destroy
+  has_many :review
 end
