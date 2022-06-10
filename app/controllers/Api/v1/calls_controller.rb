@@ -13,7 +13,7 @@ class Api::V1::CallsController < ApiController
   def index
     @calls = current_user.call.all
 
-    render json: @call
+    render json: @calls
   end
 
   # GET /calls/1
