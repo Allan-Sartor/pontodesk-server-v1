@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   # User route for sign_up
   devise_for :users, controllers: { registrations: 'registrations' }
   
@@ -9,15 +8,21 @@ Rails.application.routes.draw do
       post :auth, to: 'authentication#login'
       get  '/auth_token', to: 'authentication#validate_user'
       
-      # Users routes
-      get  '/usersall', to: 'user#index'
-      get  '/usershow/:id', to: 'user#show'
+      # Users routes for Admin
+      get '/usersall', to: 'user#index'
+      get '/usershow/:id', to: 'user#show'
 
-      # Calls routes
-      resource :calls
-      get '/calls/:id', to: 'calls#show'
+      # Calls routes for Admin
       get '/calls_all', to: 'calls#get_all_calls'
+      delete '/calls_delete/:id', to: 'calls#destroy'
 
+      # Calls routes for User
+      get '/calls', to: 'calls#index'
+      get '/calls_find/:id', to: 'calls#show'
+      post '/calls', to: 'calls#create'
+      put '/calls_edit/:id', to: 'calls#update'
+      
+      # Reviews routes for User
       resources :reviews
     end
   end
