@@ -5,7 +5,7 @@ class CallSerializer < ActiveModel::Serializer
              :description, 
              :image_url, 
              :call_status,
-             :avg_score
+             :created_at
 
   has_many :review
 end
