@@ -7,6 +7,7 @@ class Call < ApplicationRecord
     review.average(:score).round(2).to_i
   end
   
+  validates :title, presence: true
   validates :priority_level, presence: true
   validates :anydesk_number, presence: true, length: { minimum: 9 }
   validates :description, presence: true

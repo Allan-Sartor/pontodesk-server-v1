@@ -52,6 +52,6 @@ class Api::V1::CallsController < ApiController
     end
 
     def call_params
-      params.permit(:priority_level, :anydesk_number, :description, :image_url, :call_status)
+      params.permit(:title, :priority_level, :anydesk_number, :description, :image_url, :call_status)
     end
 end

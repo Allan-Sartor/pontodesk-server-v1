@@ -1,5 +1,6 @@
 class CallSerializer < ActiveModel::Serializer
   attributes :id,
+             :title,
              :priority_level, 
              :anydesk_number, 
              :description, 

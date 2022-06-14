@@ -15,9 +15,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_09_222020) do
   enable_extension "plpgsql"
 
   create_table "calls", force: :cascade do |t|
+    t.string "title", null: false
     t.string "priority_level"
     t.integer "anydesk_number"
-    t.text "description"
+    t.text "description", null: false
     t.string "image_url"
     t.boolean "call_status"
     t.bigint "user_id", null: false
