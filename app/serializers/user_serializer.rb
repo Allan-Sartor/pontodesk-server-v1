@@ -3,6 +3,7 @@ class UserSerializer < ActiveModel::Serializer
              :email,
              :name,
              :admin,
+             :sector,
              :created_at
              
   has_many :call
