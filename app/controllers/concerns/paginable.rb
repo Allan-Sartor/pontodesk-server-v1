@@ -12,8 +12,8 @@ module Paginable
   def meta_attributes(collection, extra_meta = {})
     {
       current_page: collection.current_page,
-      totalItems: collection.total_count,
-      itemsPerPage: collection.limit_value
+      itemsPerPage: collection.limit_value,
+      totalItems: collection.total_count
     }.merge(extra_meta)
   end
 end
