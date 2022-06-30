@@ -15,6 +15,8 @@ gem 'jwt'
 
 gem 'rack-cors'
 
+gem 'groupdate'
+
 gem 'kaminari'
 
 gem 'active_model_serializers'

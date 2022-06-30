@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       post '/calls', to: 'calls#create'
       put '/calls_edit/:id', to: 'calls#update'
       
+      get '/call_count_of_day', to: 'dashboard#index'
+
       # Reviews routes for User
       resources :reviews
     end
