@@ -5,13 +5,15 @@ class Api::V1::AuthenticationController < ApiController
     user = User.find_by(email: params[:email])
 
     if user&.valid_password?(params[:password])
-      render json: { token: JsonWebToken.encode(sub: user.id), user: user }
+      @token = JsonWebToken.encode(sub: user.id)
+
+      render json: { token: @token, user: ActiveModelSerializers::SerializableResource.new(user).as_json }, status: :ok
     else
       render json: { errors: 'E-mail ou senha inválidos!' }
     end
   end
   
   def validate_user
-    render json: current_user
+    render json: current_user, status: :ok
   end
 end
