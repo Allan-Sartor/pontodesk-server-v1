@@ -9,7 +9,7 @@ class Api::V1::AuthenticationController < ApiController
 
       render json: { token: @token, user: ActiveModelSerializers::SerializableResource.new(user).as_json }, status: :ok
     else
-      render json: { errors: 'E-mail ou senha inválidos!' }
+      render json: { errors: 'E-mail ou senha inválidos!' }, status: :unprocessable_entity
     end
   end
   
