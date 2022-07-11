@@ -5,6 +5,4 @@ class UserSerializer < ActiveModel::Serializer
              :admin,
              :sector,
              :created_at
-             
-  has_many :call
 end
