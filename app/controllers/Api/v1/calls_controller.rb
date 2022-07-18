@@ -48,7 +48,7 @@ class Api::V1::CallsController < ApiController
 
   private
     def set_call
-      @call = current_user.call.find(params[:id])
+      @call = Call.find(params[:id])
     end
 
     def call_params
