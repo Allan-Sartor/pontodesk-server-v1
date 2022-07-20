@@ -18,7 +18,8 @@ class Api::V1::CallsController < ApiController
 
   # GET /calls/1
   def show
-    render json: { call: @call }
+    render json: { call: ActiveModelSerializers::SerializableResource.new(@call).as_json }
+    
   end
 
   # POST /calls
